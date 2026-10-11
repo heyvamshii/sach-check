@@ -1,0 +1,44 @@
+{
+  "images": 6,
+  "tesseract": 1,
+  "vision": null,
+  "rows": [
+    {
+      "file": "forward_gps_chip.png",
+      "lang": "en",
+      "tesseract": 1,
+      "vision": null
+    },
+    {
+      "file": "forward_hot_water.png",
+      "lang": "en",
+      "tesseract": 0.99,
+      "vision": null
+    },
+    {
+      "file": "forward_whatsapp_fee.png",
+      "lang": "en",
+      "tesseract": 1,
+      "vision": null
+    },
+    {
+      "file": "forward_rbi_2000.png",
+      "lang": "en",
+      "tesseract": 1,
+      "vision": null
+    },
+    {
+      "file": "forward_hindi_coins.png",
+      "lang": "hi",
+      "tesseract": 1,
+      "vision": null
+    },
+    {
+      "file": "forward_telugu_anthem.png",
+      "lang": "te",
+      "tesseract": 1,
+      "vision": null
+    }
+  ],
+  "generatedAt": "2026-10-11"
+}

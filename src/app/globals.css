@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* Newsprint fact-desk palette. Verdict colours carry meaning; nothing else is coloured. */
+:root {
+  --paper: #f4efe6;
+  --paper-deep: #ebe3d5;
+  --card: #fbf8f2;
+  --ink: #1a1714;
+  --ink-soft: #3d3732;
+  --muted: #6e655b;
+  --rule: #d6cbb8;
+  --false: #b3261e;
+  --true: #1f6b40;
+  --misleading: #a85f00;
+  --unverified: #4b5563;
+  --wire: #0b5d52;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-false: var(--false);
+  --color-true: var(--true);
+  --color-misleading: var(--misleading);
+  --color-unverified: var(--unverified);
+  --color-wire: var(--wire);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-plex), system-ui, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  /* faint paper grain */
+  background-image: radial-gradient(rgba(26, 23, 20, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* rubber-stamp verdict */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 3px double currentColor;
+  padding: 0.15em 0.55em;
+  transform: rotate(-4deg);
+  border-radius: 4px;
+  mask-image: radial-gradient(circle at 30% 40%, #000 60%, rgba(0, 0, 0, 0.82) 100%);
+  animation: stamp-in 380ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(1.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-4deg) scale(1);
+  }
+}
+
+.rise {
+  animation: rise 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pulse-dot {
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp,
+  .rise,
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--wire);
+  outline-offset: 2px;
+}

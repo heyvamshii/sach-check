@@ -1,0 +1,692 @@
+[
+  {
+    "file": "fresh_original_00.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 77,
+    "final_quality": 90,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_01.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 65,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": {
+      "x": 423,
+      "y": 117,
+      "width": 154,
+      "height": 184
+    }
+  },
+  {
+    "file": "fresh_original_02.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 66,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_03.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 70,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": {
+      "x": 132,
+      "y": 153,
+      "width": 171,
+      "height": 92
+    }
+  },
+  {
+    "file": "fresh_original_04.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 75,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_05.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 65,
+    "final_quality": 92,
+    "whatsapp": false,
+    "box": {
+      "x": 505,
+      "y": 129,
+      "width": 130,
+      "height": 153
+    }
+  },
+  {
+    "file": "fresh_original_06.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 72,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_07.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 64,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": {
+      "x": 46,
+      "y": 265,
+      "width": 98,
+      "height": 154
+    }
+  },
+  {
+    "file": "fresh_original_08.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 78,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_09.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 66,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": {
+      "x": 288,
+      "y": 205,
+      "width": 102,
+      "height": 199
+    }
+  },
+  {
+    "file": "fresh_original_10.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 78,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_11.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 63,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": {
+      "x": 69,
+      "y": 10,
+      "width": 118,
+      "height": 92
+    }
+  },
+  {
+    "file": "fresh_original_12.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 77,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_13.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 73,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": {
+      "x": 332,
+      "y": 242,
+      "width": 143,
+      "height": 177
+    }
+  },
+  {
+    "file": "fresh_original_14.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 64,
+    "final_quality": 92,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_15.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 74,
+    "final_quality": 92,
+    "whatsapp": false,
+    "box": {
+      "x": 133,
+      "y": 87,
+      "width": 129,
+      "height": 187
+    }
+  },
+  {
+    "file": "fresh_original_16.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 63,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_17.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 70,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": {
+      "x": 180,
+      "y": 183,
+      "width": 181,
+      "height": 184
+    }
+  },
+  {
+    "file": "fresh_original_18.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 80,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_19.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 73,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": {
+      "x": 79,
+      "y": 270,
+      "width": 126,
+      "height": 140
+    }
+  },
+  {
+    "file": "fresh_original_20.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 63,
+    "final_quality": 93,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_21.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 65,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": {
+      "x": 429,
+      "y": 187,
+      "width": 177,
+      "height": 196
+    }
+  },
+  {
+    "file": "fresh_original_22.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 63,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_23.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 77,
+    "final_quality": 93,
+    "whatsapp": false,
+    "box": {
+      "x": 499,
+      "y": 185,
+      "width": 98,
+      "height": 111
+    }
+  },
+  {
+    "file": "fresh_original_24.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 78,
+    "final_quality": 92,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_25.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 70,
+    "final_quality": 91,
+    "whatsapp": false,
+    "box": {
+      "x": 416,
+      "y": 8,
+      "width": 95,
+      "height": 115
+    }
+  },
+  {
+    "file": "fresh_original_26.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 68,
+    "final_quality": 90,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_27.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 63,
+    "final_quality": 94,
+    "whatsapp": false,
+    "box": {
+      "x": 187,
+      "y": 104,
+      "width": 185,
+      "height": 96
+    }
+  },
+  {
+    "file": "fresh_original_28.jpg",
+    "edited": false,
+    "case": "fresh",
+    "first_quality": 71,
+    "final_quality": 93,
+    "whatsapp": false,
+    "box": null
+  },
+  {
+    "file": "fresh_edited_29.jpg",
+    "edited": true,
+    "case": "fresh",
+    "first_quality": 79,
+    "final_quality": 95,
+    "whatsapp": false,
+    "box": {
+      "x": 258,
+      "y": 75,
+      "width": 200,
+      "height": 197
+    }
+  },
+  {
+    "file": "whatsapp_original_00.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 73,
+    "final_quality": 70,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_01.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 79,
+    "final_quality": 76,
+    "whatsapp": true,
+    "box": {
+      "x": 432,
+      "y": 264,
+      "width": 97,
+      "height": 199
+    }
+  },
+  {
+    "file": "whatsapp_original_02.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 76,
+    "final_quality": 78,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_03.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 63,
+    "final_quality": 80,
+    "whatsapp": true,
+    "box": {
+      "x": 344,
+      "y": 237,
+      "width": 196,
+      "height": 139
+    }
+  },
+  {
+    "file": "whatsapp_original_04.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 63,
+    "final_quality": 79,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_05.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 71,
+    "final_quality": 74,
+    "whatsapp": true,
+    "box": {
+      "x": 101,
+      "y": 74,
+      "width": 119,
+      "height": 193
+    }
+  },
+  {
+    "file": "whatsapp_original_06.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 66,
+    "final_quality": 79,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_07.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 73,
+    "final_quality": 78,
+    "whatsapp": true,
+    "box": {
+      "x": 35,
+      "y": 153,
+      "width": 160,
+      "height": 173
+    }
+  },
+  {
+    "file": "whatsapp_original_08.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 80,
+    "final_quality": 71,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_09.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 80,
+    "final_quality": 72,
+    "whatsapp": true,
+    "box": {
+      "x": 397,
+      "y": 89,
+      "width": 95,
+      "height": 195
+    }
+  },
+  {
+    "file": "whatsapp_original_10.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 78,
+    "final_quality": 73,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_11.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 75,
+    "final_quality": 72,
+    "whatsapp": true,
+    "box": {
+      "x": 441,
+      "y": 263,
+      "width": 96,
+      "height": 168
+    }
+  },
+  {
+    "file": "whatsapp_original_12.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 63,
+    "final_quality": 72,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_13.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 65,
+    "final_quality": 77,
+    "whatsapp": true,
+    "box": {
+      "x": 30,
+      "y": 57,
+      "width": 157,
+      "height": 183
+    }
+  },
+  {
+    "file": "whatsapp_original_14.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 80,
+    "final_quality": 75,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_15.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 60,
+    "final_quality": 71,
+    "whatsapp": true,
+    "box": {
+      "x": 61,
+      "y": 102,
+      "width": 109,
+      "height": 146
+    }
+  },
+  {
+    "file": "whatsapp_original_16.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 69,
+    "final_quality": 71,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_17.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 61,
+    "final_quality": 73,
+    "whatsapp": true,
+    "box": {
+      "x": 99,
+      "y": 259,
+      "width": 125,
+      "height": 190
+    }
+  },
+  {
+    "file": "whatsapp_original_18.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 71,
+    "final_quality": 70,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_19.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 75,
+    "final_quality": 70,
+    "whatsapp": true,
+    "box": {
+      "x": 235,
+      "y": 89,
+      "width": 146,
+      "height": 188
+    }
+  },
+  {
+    "file": "whatsapp_original_20.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 60,
+    "final_quality": 73,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_21.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 61,
+    "final_quality": 75,
+    "whatsapp": true,
+    "box": {
+      "x": 432,
+      "y": 381,
+      "width": 141,
+      "height": 94
+    }
+  },
+  {
+    "file": "whatsapp_original_22.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 73,
+    "final_quality": 78,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_23.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 62,
+    "final_quality": 79,
+    "whatsapp": true,
+    "box": {
+      "x": 215,
+      "y": 240,
+      "width": 163,
+      "height": 191
+    }
+  },
+  {
+    "file": "whatsapp_original_24.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 77,
+    "final_quality": 78,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_25.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 76,
+    "final_quality": 78,
+    "whatsapp": true,
+    "box": {
+      "x": 15,
+      "y": 25,
+      "width": 163,
+      "height": 129
+    }
+  },
+  {
+    "file": "whatsapp_original_26.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 70,
+    "final_quality": 71,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_27.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 72,
+    "final_quality": 75,
+    "whatsapp": true,
+    "box": {
+      "x": 53,
+      "y": 9,
+      "width": 119,
+      "height": 128
+    }
+  },
+  {
+    "file": "whatsapp_original_28.jpg",
+    "edited": false,
+    "case": "whatsapp",
+    "first_quality": 70,
+    "final_quality": 76,
+    "whatsapp": true,
+    "box": null
+  },
+  {
+    "file": "whatsapp_edited_29.jpg",
+    "edited": true,
+    "case": "whatsapp",
+    "first_quality": 72,
+    "final_quality": 80,
+    "whatsapp": true,
+    "box": {
+      "x": 245,
+      "y": 164,
+      "width": 109,
+      "height": 134
+    }
+  }
+]

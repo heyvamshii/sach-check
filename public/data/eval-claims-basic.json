@@ -1,0 +1,523 @@
+{
+  "mode": "basic",
+  "services": {
+    "groq": false,
+    "factCheck": false,
+    "tavily": false,
+    "telegram": false
+  },
+  "claims": 50,
+  "correct": 12,
+  "accuracy": 0.24,
+  "fakeCaught": 12,
+  "fakeTotal": 30,
+  "trueConfirmed": 0,
+  "trueTotal": 20,
+  "fakeCalledTrue": 0,
+  "unverified": 37,
+  "categoryAccuracy": 0.68,
+  "rows": [
+    {
+      "id": 1,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 5
+    },
+    {
+      "id": 2,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "political",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 3,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "political",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 4,
+      "lang": "hi",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 5,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 6,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 7,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 8,
+      "lang": "hi",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 9,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 10,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 11,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "political",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 12,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "political",
+      "categoryCorrect": false,
+      "sources": 6
+    },
+    {
+      "id": 13,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 14,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 6
+    },
+    {
+      "id": 15,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "political",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 16,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 17,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 4
+    },
+    {
+      "id": 18,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 1
+    },
+    {
+      "id": 19,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 20,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 21,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 22,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 23,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 24,
+      "lang": "en",
+      "label": "Misleading",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "political",
+      "categoryCorrect": true,
+      "sources": 3
+    },
+    {
+      "id": 25,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 26,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 27,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 28,
+      "lang": "en",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 29,
+      "lang": "en",
+      "label": "False",
+      "verdict": "False",
+      "correct": true,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 1
+    },
+    {
+      "id": 30,
+      "lang": "te",
+      "label": "False",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 0
+    },
+    {
+      "id": 31,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 32,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 33,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 34,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 35,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 36,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 37,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "political",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 38,
+      "lang": "en",
+      "label": "True",
+      "verdict": "False",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 39,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 40,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 41,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 42,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "political",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 43,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": false,
+      "sources": 8
+    },
+    {
+      "id": 44,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 45,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "health",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 46,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 47,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 48,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 49,
+      "lang": "en",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "financial",
+      "categoryCorrect": true,
+      "sources": 8
+    },
+    {
+      "id": 50,
+      "lang": "hi",
+      "label": "True",
+      "verdict": "Unverified",
+      "correct": false,
+      "category": "other",
+      "categoryCorrect": false,
+      "sources": 8
+    }
+  ],
+  "generatedAt": "2026-10-11",
+  "trueCalledFake": 1
+}

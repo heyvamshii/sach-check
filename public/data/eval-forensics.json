@@ -1,0 +1,22 @@
+{
+  "method": "Error Level Analysis: re-save at JPEG quality 75, average over ~100 px windows, compare the strongest area to a typical one",
+  "cutoff": 2.44,
+  "tuneAccuracy": 0.7,
+  "fresh": {
+    "photos": 30,
+    "accuracy": 0.67,
+    "editedCaught": 8,
+    "editedMissed": 7,
+    "originalsCleared": 12,
+    "originalsWronglyFlagged": 3
+  },
+  "whatsapp": {
+    "photos": 30,
+    "accuracy": 0.6,
+    "editedCaught": 7,
+    "editedMissed": 8,
+    "originalsCleared": 11,
+    "originalsWronglyFlagged": 4
+  },
+  "generatedAt": "2026-10-11"
+}
