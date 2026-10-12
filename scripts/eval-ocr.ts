@@ -53,12 +53,20 @@ async function main() {
   for (const item of truth) {
     const bytes = readFileSync(join(ROOT, item.file));
     const tesseract = messageOnly((await worker.recognize(bytes)).data.text);
-    let vision: string | null = null;
+    let vision: string | null = null as string | null;
     if (groq) {
       const dataUrl = `data:image/png;base64,${bytes.toString("base64")}`;
-      vision = await readImageText(dataUrl, groq, modelsFor("vision"))
-        .then((r) => messageOnly(r.text))
-        .catch(() => null);
+      // the free tier rate-limits image requests, so wait and retry once
+      for (let attempt = 0; attempt < 2 && vision === null; attempt++) {
+        if (attempt > 0) await new Promise((resolve) => setTimeout(resolve, 30_000));
+        vision = await readImageText(dataUrl, groq, modelsFor("vision"))
+          .then((r) => messageOnly(r.text))
+          .catch((error: unknown) => {
+            console.error(`vision failed on ${item.file}:`, error instanceof Error ? error.message : error);
+            return null;
+          });
+      }
+      await new Promise((resolve) => setTimeout(resolve, 4000)); // stay inside the free-tier rate limit
     }
     const row = {
       file: item.file.split("/").pop(),

@@ -117,3 +117,11 @@ describe("gatherEvidence", () => {
     expect(result.evidence[0].source).toBe("factcheck");
   });
 });
+
+describe("rankEvidence with a query", () => {
+  it("puts on-topic results above off-topic trusted ones", () => {
+    const off: Found = { source: "web", title: "Auction regime of Odisha mines", url: "https://mines.gov.in/a", publisher: "mines.gov.in", trusted: true };
+    const on: Found = { source: "news", title: "Rs 2000 note has no GPS chip", url: "https://x.example/b", publisher: "Blog", trusted: false };
+    expect(rankEvidence([off, on], 8, "Rs 2000 note GPS chip")[0].title).toBe("Rs 2000 note has no GPS chip");
+  });
+});

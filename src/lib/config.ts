@@ -40,10 +40,11 @@ export function serviceStatus(env: NodeJS.ProcessEnv = process.env): ServiceStat
 /** Each step gets its own model, so the pipeline really is multi-model. Env vars override the first choice. */
 export function modelsFor(step: "extract" | "classify" | "judge" | "vision", env: NodeJS.ProcessEnv = process.env): string[] {
   const defaults: Record<typeof step, string[]> = {
-    extract: ["openai/gpt-oss-20b", "llama-3.3-70b-versatile"],
-    classify: ["llama-3.1-8b-instant", "openai/gpt-oss-20b"],
-    judge: ["openai/gpt-oss-120b", "llama-3.3-70b-versatile"],
-    vision: ["meta-llama/llama-4-scout-17b-16e-instruct", "meta-llama/llama-4-maverick-17b-128e-instruct"],
+    extract: ["openai/gpt-oss-20b", "openai/gpt-oss-120b"],
+    classify: ["qwen/qwen3.8-27b", "openai/gpt-oss-20b"],
+    judge: ["openai/gpt-oss-120b", "openai/gpt-oss-20b"],
+    // the page falls back to Tesseract in the browser when this is busy
+    vision: ["qwen/qwen3.8-27b"],
   };
   const override = env[`GROQ_${step.toUpperCase()}_MODEL`]?.trim();
   return [...new Set([...(override ? [override] : []), ...defaults[step]])];

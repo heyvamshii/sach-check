@@ -13,9 +13,9 @@ Fake forwards (miracle cures, "RBI is banning ₹10 coins", edited photos) sprea
 ```mermaid
 flowchart LR
     A[Forward: text / screenshot / photo] --> M1
-    M1["Model 1: Image reader<br/>Groq Llama 4 Scout vision<br/>(Tesseract OCR fallback)"] --> M2
+    M1["Model 1: Image reader<br/>Groq Qwen3.8 27B vision<br/>(Tesseract OCR fallback)"] --> M2
     A --> M2
-    M2["Model 2: Claim finder + topic sorter<br/>gpt-oss-20b + Llama 3.1 8B"] --> M3
+    M2["Model 2: Claim finder + topic sorter<br/>gpt-oss-20b + Qwen3.8 27B"] --> M3
     M3["Model 3: Evidence search<br/>Google Fact Check API, Google News, Tavily"] --> M5
     A --> M4["Model 4: Image forensics<br/>ELA + EXIF/C2PA + ViT deepfake detector"]
     M5["Model 5: Judge<br/>gpt-oss-120b"] --> V[Verdict + sources]
@@ -24,9 +24,9 @@ flowchart LR
 
 | # | Model | Tool (all free) | Job |
 |---|---|---|---|
-| 1 | Image reader | Groq `llama-4-scout` vision; **Tesseract.js** (English, Hindi, Telugu) runs in the browser when there's no key | Reads the text inside screenshots |
+| 1 | Image reader | Groq `qwen3.8-27b` (reads images); **Tesseract.js** (English, Hindi, Telugu) runs in the browser when there's no key | Reads the text inside screenshots |
 | 2a | Claim finder | Groq `gpt-oss-20b` | Picks out the checkable claims and writes an English search query for each |
-| 2b | Topic sorter | Groq `llama-3.1-8b-instant` | Labels each claim: health, political, financial or other |
+| 2b | Topic sorter | Groq `qwen3.8-27b` | Labels each claim: health, political, financial or other |
 | 3 | Evidence search | Google Fact Check Tools API, Google News RSS, Tavily | Finds fact-checks (PIB, Alt News, BOOM, Factly, Vishvas News…) and trusted news; ranks fact-checks first |
 | 4 | Image forensics | Error Level Analysis (pure JS), EXIF/XMP/C2PA markers, `prithivMLmods/AI-vs-Deepfake-vs-Real` ViT model in the browser (transformers.js) | Edited areas, editing software, AI-generation markers, deepfake probability |
 | 5 | Judge | Groq `gpt-oss-120b` | Weighs **only the evidence found** and answers True / False / Misleading / Unverified, citing sources |
@@ -44,8 +44,8 @@ All test data is generated or written by scripts in this repo; nothing is downlo
 | Test | What | Result |
 |---|---|---|
 | Fact-check verdicts, basic mode (no keys) | 50 known claims (30 fake/misleading, 20 true) in English, Hindi and Telugu: `data/claims.json` | Caught **12 of 30** fakes, **never called a fake claim true**, wrongly flagged 1 of 20 true claims; says "Unverified" when it can't settle a claim |
-| Fact-check verdicts, AI mode | Same 50 claims with Groq + Fact Check API | _run `npm run eval:claims` after adding keys_ |
-| Reading text from images | 6 generated WhatsApp screenshots | Tesseract: **100%** of characters on these clean images (real phone screenshots score lower) |
+| Fact-check verdicts, AI mode | Same 50 claims with Groq + Fact Check API + Tavily | **48 of 50 right (96%)**: caught **all 30** fakes, confirmed 18 of 20 true claims (2 left "Unverified"), **0** fakes called true, **0** true claims called fake; topic sorting 94% right |
+| Reading text from images | 6 generated WhatsApp screenshots | Tesseract: **100%**; Groq Qwen vision: **92%** on the images it answered (the free tier rate-limited one). Clean generated images, so real phone screenshots score lower |
 | Spotting edited photos (ELA) | 60 unseen generated photos with a pasted-in patch vs untouched | **67%** on fresh edits, **60%** after WhatsApp-style re-compression (50% = guessing) |
 
 **Honest limits**
@@ -68,7 +68,7 @@ npm run dev                  # http://localhost:3000
 
 | Command | What it does |
 |---|---|
-| `npm test` | 93 unit tests (Vitest) |
+| `npm test` | 96 unit tests (Vitest) |
 | `npm run coverage` | Tests with coverage (~95% of `src/lib`) |
 | `npm run samples` | Regenerates screenshots, test photos and icons (`scripts/make_samples.py`) |
 | `npm run eval:claims` | Runs the 50 claims through the pipeline → `public/data/eval-claims-<mode>.json` |

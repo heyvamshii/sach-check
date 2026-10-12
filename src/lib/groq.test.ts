@@ -56,7 +56,7 @@ describe("config", () => {
 
   it("lets an env var choose the first model for a step", () => {
     expect(modelsFor("judge", { GROQ_JUDGE_MODEL: "my-model" } as unknown as NodeJS.ProcessEnv)[0]).toBe("my-model");
-    expect(modelsFor("classify", {} as NodeJS.ProcessEnv)[0]).toBe("llama-3.1-8b-instant");
+    expect(modelsFor("classify", {} as NodeJS.ProcessEnv)[0]).toBe("qwen/qwen3.8-27b");
   });
 
   it("shortens model names for display", () => {

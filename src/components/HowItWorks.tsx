@@ -1,6 +1,6 @@
 const MODELS = [
-  { n: "1", name: "Image reader", tool: "Groq Llama 4 Scout (vision) · Tesseract OCR as free fallback", job: "Reads the text inside screenshots, in English, Hindi or Telugu." },
-  { n: "2", name: "Claim finder + sorter", tool: "Groq gpt-oss-20b · Llama 3.1 8B", job: "Pulls out the checkable claims and tags each one as health, political, money or other." },
+  { n: "1", name: "Image reader", tool: "Groq Qwen3.8 27B (vision) · Tesseract OCR as free fallback", job: "Reads the text inside screenshots, in English, Hindi or Telugu." },
+  { n: "2", name: "Claim finder + sorter", tool: "Groq gpt-oss-20b · Qwen3.8 27B", job: "Pulls out the checkable claims and tags each one as health, political, money or other." },
   { n: "3", name: "Evidence search", tool: "Google Fact Check API · Google News · Tavily", job: "Looks for fact-checks by PIB, Alt News, BOOM, Factly and reports from trusted newsrooms." },
   { n: "4", name: "Image forensics", tool: "Error Level Analysis · EXIF/C2PA check · ViT deepfake detector", job: "Looks for pasted-in areas, editing software and AI-generation markers." },
   { n: "5", name: "Judge", tool: "Groq gpt-oss-120b", job: "Weighs only the evidence found and gives a verdict with sources, or says Unverified." },

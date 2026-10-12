@@ -138,3 +138,17 @@ describe("safeguards from code review", () => {
     expect(judged.explanation).toBe("Fake. Claim prize at or now");
   });
 });
+
+describe("text helpers", () => {
+  it("turns ₹ into Rs for search engines", async () => {
+    const { searchQuery } = await import("./text");
+    expect(searchQuery("₹2000 note GPS chip?")).toBe("Rs 2000 note GPS chip");
+  });
+});
+
+describe("shortQuery", () => {
+  it("keeps the first five words", async () => {
+    const { shortQuery } = await import("./text");
+    expect(shortQuery("Rs 2000 note GPS chip underground tracking")).toBe("Rs 2000 note GPS chip");
+  });
+});

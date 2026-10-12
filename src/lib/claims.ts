@@ -112,7 +112,7 @@ export function extractClaimsBasic(text: string): RawClaim[] {
 const EXTRACT_PROMPT = `You help fact-check WhatsApp forwards from India. Return JSON only.
 Find the checkable factual claims in the message (at most ${MAX_CLAIMS}). Ignore greetings, opinions, prayers and "please share" requests.
 The message may be in English, Hindi, Telugu or a mix. Keep "text" in the original language, quoted or closely paraphrased.
-"query" is a short English web-search query (5-10 words) that would find news or fact-checks about the claim.
+"query" is a short English news-search query of 3-6 key words (names, numbers, the key object), most important words first, e.g. "Rs 2000 note GPS chip". Use "Rs" instead of "₹".
 Shape: {"claims": [{"text": string, "query": string}]}. If there is nothing checkable, return {"claims": []}.`;
 
 export function parseClaimsJson(data: Record<string, unknown>): RawClaim[] {

@@ -1,5 +1,8 @@
 import type { FetchLike } from "../groq";
-import { hostOf, isTrustedPublisher, isTrustedUrl, TRUSTED_DOMAINS } from "../trusted";
+import { FACT_CHECKERS, hostOf, isTrustedPublisher, isTrustedUrl, NEWSROOMS } from "../trusted";
+
+// fact-checkers and newsrooms only: the broad gov.in / nic.in domains mostly return unrelated PDFs
+const TAVILY_DOMAINS = [...FACT_CHECKERS, ...NEWSROOMS, "who.int", "rbi.org.in"];
 import type { Evidence } from "../types";
 
 /** Step 3 (Model 3, search half): free evidence sources. Each returns [] on failure; ids are assigned later. */
@@ -137,7 +140,7 @@ export async function searchTavily(query: string, apiKey: string, fetchImpl: Fet
   const response = await fetchImpl("https://api.tavily.com/search", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ query, search_depth: "basic", max_results: 6, include_domains: TRUSTED_DOMAINS }),
+    body: JSON.stringify({ query, search_depth: "basic", max_results: 6, include_domains: TAVILY_DOMAINS }),
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!response.ok) throw new Error(`Tavily HTTP ${response.status}`);

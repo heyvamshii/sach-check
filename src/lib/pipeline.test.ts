@@ -47,13 +47,13 @@ describe("checkText with a Groq key", () => {
         respond: (_u, init) => {
           const { model } = bodyOf(init) as { model: string };
           if (model === "openai/gpt-oss-20b") return groqReply({ claims: [{ text: "₹2000 note has a GPS chip", query: "2000 note gps chip" }] });
-          if (model === "llama-3.1-8b-instant") return groqReply({ categories: ["financial"] });
+          if (model === "qwen/qwen3.8-27b") return groqReply({ categories: ["financial"] });
           return groqReply({ verdict: "False", confidence: "high", explanation: "Debunked.", citations: [1] });
         },
       },
     ]);
     const result = await checkText(FORWARD, { keys: { groq: "key" }, gather, fetchImpl, env: {} as NodeJS.ProcessEnv });
-    expect(result.steps.map((s) => s.engine)).toEqual(["gpt-oss-20b", "llama-3.1-8b-instant", "Google News", "gpt-oss-120b"]);
+    expect(result.steps.map((s) => s.engine)).toEqual(["gpt-oss-20b", "qwen3.8-27b", "Google News", "gpt-oss-120b"]);
     expect(result.results[0]).toMatchObject({ verdict: "False", confidence: "high", citations: [1] });
     expect(result.warnings).toEqual([]);
   });

@@ -1,7 +1,10 @@
 import { chatJson, type FetchLike } from "./groq";
+import { isRelevant } from "./text";
 import { isFactChecker } from "./trusted";
 import type { Claim, Confidence, Evidence, Verdict } from "./types";
 import { VERDICTS } from "./types";
+
+export { isRelevant, stem } from "./text";
 
 /** Step 4 (Model 5): weigh the evidence and give a verdict. */
 
@@ -27,33 +30,6 @@ export function normalizeRating(rating: string | undefined): Verdict {
 
 // headline phrasing fact-checkers use when debunking ("No, RBI is not...", "Viral claim that ... is fake")
 const DEBUNK_HEADLINE = new RegExp(`^(no,|fact ?check:?\\s*(no|fake|false))|${FALSE_WORDS.source}|do(es)? not|did not|didn't|doesn't|isn't|aren't`, "i");
-
-/** Rough stemming so "charging", "chargeable" and "charge" match. */
-export function stem(word: string): string {
-  let w = word;
-  for (let i = 0; i < 2 && w.length > 4; i++) w = w.replace(/(ability|able|ing|ed|s|e)$/, "");
-  return w;
-}
-
-function tokens(text: string): Set<string> {
-  return new Set(
-    text
-      .toLowerCase()
-      .replace(/[^\p{L}\p{N}\s]/gu, " ")
-      .split(/\s+/)
-      .map((w) => w.replace(/^rs$/, "₹"))
-      .filter((w) => w.length > 2 || /\d/.test(w))
-      .map(stem),
-  );
-}
-
-/** Does a headline talk about the same thing as the claim? (shares at least 2 keywords) */
-export function isRelevant(title: string, query: string): boolean {
-  if (!query.trim()) return true;
-  const wanted = tokens(query);
-  const shared = [...tokens(title)].filter((w) => wanted.has(w)).length;
-  return shared >= Math.min(2, wanted.size);
-}
 
 /** Rule-based verdict from ratings and headlines, used when no Groq key is set. */
 export function judgeBasic(evidence: Evidence[], query = ""): Judgement {
