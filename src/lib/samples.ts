@@ -20,6 +20,14 @@ export const TEXT_SAMPLES: TextSample[] = [
     text: "डॉक्टरों की सलाह: हर 15 मिनट में गर्म पानी पीने से गले में मौजूद कोरोना वायरस मर जाता है। सभी को फॉरवर्ड करें।",
   },
   {
+    label: "SBI KYC link (scam)",
+    text: "Dear SBI customer, your YONO account will be blocked today. Please update your KYC immediately at sbi-kyc-update.xyz/login to avoid suspension. Ignore if already done.",
+  },
+  {
+    label: "WHO link (misleading)",
+    text: "WHO has confirmed that drinking hot water every 15 minutes kills the coronavirus. Read it yourself here https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19 and share with family.",
+  },
+  {
     label: "₹2000 notes withdrawn",
     text: "RBI has announced that ₹2000 notes are being withdrawn from circulation. People can deposit or exchange them at bank branches.",
   },

@@ -5,6 +5,7 @@ import { useChecker } from "@/hooks/useChecker";
 import { registerServiceWorker, type SharedItem, takeSharedItem } from "@/lib/client/share";
 import type { ApiResponse, ServiceStatus } from "@/lib/types";
 import { ImageReport } from "./ImageReport";
+import { LinkCard } from "./LinkCard";
 import { InputPanel } from "./InputPanel";
 import { PipelineSteps } from "./PipelineSteps";
 import { VerdictCard } from "./VerdictCard";
@@ -13,6 +14,7 @@ const SERVICE_LABELS: { key: keyof ServiceStatus; label: string; offNote: string
   { key: "groq", label: "Groq AI models", offNote: "basic rules used instead" },
   { key: "factCheck", label: "Google Fact Check", offNote: "skipped" },
   { key: "tavily", label: "Tavily web search", offNote: "skipped" },
+  { key: "safeBrowsing", label: "Google Safe Browsing", offNote: "skipped" },
 ];
 
 function ServiceChips({ status }: { status: ServiceStatus | null }) {
@@ -97,7 +99,7 @@ export function Checker() {
         </section>
         <aside aria-label="Pipeline" className="lg:border-l lg:border-rule lg:pl-10">
           <p className="kicker mb-1">On the desk</p>
-          <h2 className="mb-5 font-display text-2xl font-semibold">Five models, one verdict</h2>
+          <h2 className="mb-5 font-display text-2xl font-semibold">Six models, one verdict</h2>
           <PipelineSteps steps={steps} />
           <div className="mt-6 border-t border-rule pt-3">
             <ServiceChips status={status} />
@@ -120,6 +122,14 @@ export function Checker() {
             </p>
           ))}
           {result?.results.map((r, i) => <VerdictCard key={`${r.claim.text}-${i}`} result={r} index={i} total={result.results.length} />)}
+          {result && result.links.length > 0 && (
+            <div className="space-y-6">
+              <h3 className="font-display text-2xl font-extrabold">Links in this message</h3>
+              {result.links.map((link, i) => (
+                <LinkCard key={link.url} link={link} index={i} total={result.links.length} />
+              ))}
+            </div>
+          )}
           {analysis && <ImageReport analysis={analysis} />}
           {analysis && !analysis.readText && !result && <p className="text-sm text-muted">No text was found in the image, so only the image check was done.</p>}
         </section>

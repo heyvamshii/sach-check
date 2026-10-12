@@ -1,6 +1,6 @@
 # SachCheck: WhatsApp forward fact-checker
 
-**A multi-model AI fact-checker that reads WhatsApp forwards (text or images), checks the claims against trusted sources, and flags edited or AI-generated images, so people can stop fake health, political and financial news before it spreads.**
+**A multi-model AI fact-checker that reads WhatsApp forwards (text or images), checks the claims against trusted sources, flags scam and misleading links, and spots edited or AI-generated images, so people can stop fake health, political and financial news before it spreads.**
 
 > Live demo: _add your Vercel link here_
 
@@ -8,7 +8,7 @@ Fake forwards (miracle cures, "RBI is banning ₹10 coins", edited photos) sprea
 
 ---
 
-## How it works: five models, one verdict
+## How it works: six models, one verdict
 
 ```mermaid
 flowchart LR
@@ -16,10 +16,13 @@ flowchart LR
     M1["Model 1: Image reader<br/>Groq Qwen3.8 27B vision<br/>(Tesseract OCR fallback)"] --> M2
     A --> M2
     M2["Model 2: Claim finder + topic sorter<br/>gpt-oss-20b + Qwen3.8 27B"] --> M3
-    M3["Model 3: Evidence search<br/>Google Fact Check API, Google News, Tavily"] --> M5
+    M3["Model 3: Evidence search<br/>Google Fact Check API, Google News, Tavily"] --> M6
     A --> M4["Model 4: Image forensics<br/>ELA + EXIF/C2PA + ViT deepfake detector"]
-    M5["Model 5: Judge<br/>gpt-oss-120b"] --> V[Verdict + sources]
+    A --> M5["Model 5: Link checker<br/>link rules + Google Safe Browsing<br/>+ Tavily page read + gpt-oss-20b"]
+    M5 -- "official pages it read" --> M6
+    M6["Model 6: Judge<br/>gpt-oss-120b"] --> V[Verdict + sources]
     M4 --> V
+    M5 --> V
 ```
 
 | # | Model | Tool (all free) | Job |
@@ -29,7 +32,8 @@ flowchart LR
 | 2b | Topic sorter | Groq `qwen3.8-27b` | Labels each claim: health, political, financial or other |
 | 3 | Evidence search | Google Fact Check Tools API, Google News RSS, Tavily | Finds fact-checks (PIB, Alt News, BOOM, Factly, Vishvas News…) and trusted news; ranks fact-checks first |
 | 4 | Image forensics | Error Level Analysis (pure JS), EXIF/XMP/C2PA markers, `prithivMLmods/AI-vs-Deepfake-vs-Real` ViT model in the browser (transformers.js) | Edited areas, editing software, AI-generation markers, deepfake probability |
-| 5 | Judge | Groq `gpt-oss-120b` | Weighs **only the evidence found** and answers True / False / Misleading / Unverified, citing sources |
+| 5 | Link checker | Link rules (look-alike names, fake bank/government sites, bait words, risky endings, IP and `@` tricks), short-link expander, Google Safe Browsing, Tavily page read, Groq `gpt-oss-20b` | Finds **every link, even mid-sentence**, and rates it Dangerous / Suspicious / Misleading / Unknown / Safe; says who it pretends to be and whether it matches what the message claims |
+| 6 | Judge | Groq `gpt-oss-120b` | Weighs **only the evidence found** and answers True / False / Misleading / Unverified, citing sources |
 
 **Works with no keys.** Every AI step has a rule-based fallback (sentence rules, keyword classifier, rating rules) and Google News needs no key, so the app always runs in a "basic mode". Keys make it much better.
 
@@ -39,13 +43,14 @@ flowchart LR
 
 ## Test results
 
-All test data is generated or written by scripts in this repo; nothing is downloaded. Full numbers are on the site's **Test results** page.
+Test data is generated or written by scripts in this repo. The only outside data is the public OpenPhish phishing feed and the Tranco list of popular sites, used to test the link checker on real links; the phishing sites themselves are never opened. Full numbers are on the site's **Test results** page.
 
 | Test | What | Result |
 |---|---|---|
 | Fact-check verdicts, basic mode (no keys) | 50 known claims (30 fake/misleading, 20 true) in English, Hindi and Telugu: `data/claims.json` | Caught **12 of 30** fakes, **never called a fake claim true**, wrongly flagged 1 of 20 true claims; says "Unverified" when it can't settle a claim |
 | Fact-check verdicts, AI mode | Same 50 claims with Groq + Fact Check API + Tavily | **48 of 50 right (96%)**: caught **all 30** fakes, confirmed 18 of 20 true claims (2 left "Unverified"), **0** fakes called true, **0** true claims called fake; topic sorting 94% right |
 | Reading text from images | 6 generated WhatsApp screenshots | Tesseract: **100%**; Groq Qwen vision: **92%** (perfect on English and Hindi, 54% on Telugu). Clean generated images, so real phone screenshots score lower |
+| Checking links (rules only, no keys) | 40 messages written by us (20 scams, 20 real); **live OpenPhish phishing feed**; Tranco top-300 popular sites | All links found and all 40 sorted right on our own set (biased, we wrote it); **58%** of 300 live phishing links flagged; **11 of 300** popular real sites wrongly flagged |
 | Spotting edited photos (ELA) | 60 unseen generated photos with a pasted-in patch vs untouched | **67%** on fresh edits, **60%** after WhatsApp-style re-compression (50% = guessing) |
 
 **Honest limits**
@@ -68,11 +73,12 @@ npm run dev                  # http://localhost:3000
 
 | Command | What it does |
 |---|---|
-| `npm test` | 96 unit tests (Vitest) |
+| `npm test` | 133 unit tests (Vitest) |
 | `npm run coverage` | Tests with coverage (~95% of `src/lib`) |
 | `npm run samples` | Regenerates screenshots, test photos and icons (`scripts/make_samples.py`) |
 | `npm run eval:claims` | Runs the 50 claims through the pipeline → `public/data/eval-claims-<mode>.json` |
 | `npm run eval:ocr` | OCR accuracy → `public/data/eval-ocr.json` |
+| `npm run eval:links` | Link finding and link verdicts, plus the live phishing-feed test → `public/data/eval-links.json` |
 | `npm run eval:forensics` | Edited-photo detection, tuned on one set and tested on another → `public/data/eval-forensics.json` |
 | `npm run telegram:webhook -- https://your-app.vercel.app` | Connects the Telegram bot after deploying |
 
@@ -81,7 +87,8 @@ npm run dev                  # http://localhost:3000
 | Variable | Where to get it | Used by |
 |---|---|---|
 | `GROQ_API_KEY` | [console.groq.com/keys](https://console.groq.com/keys) | Models 1, 2 and 5 |
-| `GOOGLE_FACTCHECK_API_KEY` | Google Cloud → enable "Fact Check Tools API" → Credentials → API key | Model 3 |
+| `GOOGLE_FACTCHECK_API_KEY` | Google Cloud → enable "Fact Check Tools API" → Credentials → API key | Model 3 (and Model 5: the same key works for Safe Browsing once that API is enabled too) |
+| `GOOGLE_SAFE_BROWSING_API_KEY` | Optional: only if you want a separate key for Safe Browsing | Model 5 |
 | `TAVILY_API_KEY` | [app.tavily.com](https://app.tavily.com) | Model 3 |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | @BotFather on Telegram; the secret is any random string | Telegram bot |
 
@@ -105,6 +112,7 @@ src/
     claims.ts classify.ts verdict.ts pipeline.ts   models 2 and 5 (+ rule-based fallbacks)
     evidence/             model 3: Fact Check API, Google News RSS, Tavily, ranking
     forensics/            model 4: ELA, metadata, combined suspicion score
+    links/                model 5: find links, rules, short-link expander, Safe Browsing, page read, AI verdict
     client/               browser-only: Tesseract OCR, deepfake detector, share target
 public/sw.js              service worker that receives shared items
 data/                     50 labelled claims, OCR truth, generated forensics photos

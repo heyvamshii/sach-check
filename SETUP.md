@@ -16,6 +16,7 @@ Everything here is free. No credit card is needed for any step.
 4. Left menu → **APIs & Services → Credentials** → **Create credentials → API key** → copy it.
 5. (Recommended) Click the key → **API restrictions → Restrict key** → tick only **Fact Check Tools API** → Save.
 6. Paste it into `.env.local` as `GOOGLE_FACTCHECK_API_KEY=...`
+7. **Also switch on Google Safe Browsing** (used by the link checker; same project, same key): open <https://console.cloud.google.com/apis/library/safebrowsing.googleapis.com> → **Enable**. If you restricted the key in step 5, edit the key and also tick **Safe Browsing API**. No new key or env var is needed.
 
 ## 3. Tavily key (optional, extra web search)
 

@@ -8,7 +8,7 @@ import { type MetadataReport, readMetadata } from "@/lib/forensics/metadata";
 import { looksLikeScreenshot } from "@/lib/forensics/score";
 import type { ApiResponse, CheckResult, StepTrace } from "@/lib/types";
 
-export type StepKey = "read" | "extract" | "classify" | "search" | "forensics" | "judge";
+export type StepKey = "read" | "extract" | "classify" | "search" | "forensics" | "links" | "judge";
 export type StepStatus = "waiting" | "running" | "done" | "skipped" | "failed";
 
 export interface StepState {
@@ -34,6 +34,7 @@ const IDLE_STEPS: Record<StepKey, StepState> = {
   classify: { status: "waiting" },
   search: { status: "waiting" },
   forensics: { status: "waiting" },
+  links: { status: "waiting" },
   judge: { status: "waiting" },
 };
 
@@ -115,7 +116,7 @@ function traceDetail(t: StepTrace): string {
   return `${(t.ms / 1000).toFixed(1)} s${t.ai ? "" : " · basic mode"}${t.note ? ` · ${t.note}` : ""}`;
 }
 
-const SERVER_STEPS: StepKey[] = ["extract", "classify", "search", "judge"];
+const SERVER_STEPS: StepKey[] = ["extract", "classify", "search", "links", "judge"];
 
 export function useChecker(aiReadingOn: boolean) {
   const [steps, setSteps] = useState<Record<StepKey, StepState>>(IDLE_STEPS);

@@ -1,6 +1,6 @@
 import type { FetchLike } from "./groq";
 import type { ImageVerdict } from "./forensics/score";
-import type { CheckResult, Verdict } from "./types";
+import type { CheckResult, LinkVerdict, Verdict } from "./types";
 
 /** Server-only helpers for the optional Telegram bot (free, no approval needed). */
 
@@ -22,6 +22,13 @@ export interface TelegramUpdate {
 }
 
 const MAX_DOWNLOAD = 8 * 1024 * 1024;
+const LINK_MARK: Record<LinkVerdict, string> = { Dangerous: "⛔ DANGEROUS", Suspicious: "⚠️ SUSPICIOUS", Misleading: "⚠️ MISLEADING", Unknown: "❔ UNKNOWN", Safe: "✅ SAFE" };
+
+/** "sbi-kyc.xyz" -> "sbi-kyc[.]xyz", so Telegram doesn't turn a scam link into a clickable one. */
+export function defang(host: string): string {
+  return host.replace(/\./g, "[.]");
+}
+
 const MARK: Record<Verdict, string> = { True: "✅ TRUE", False: "❌ FALSE", Misleading: "⚠️ MISLEADING", Unverified: "❔ UNVERIFIED" };
 
 export function isStartCommand(text: string): boolean {
@@ -43,7 +50,7 @@ export function parseUpdate(update: TelegramUpdate): { chatId: number; text: str
 export function formatReply(check: CheckResult | null, image: ImageVerdict | null, notes: string[] = []): string {
   const parts: string[] = [];
   if (check) {
-    if (check.results.length === 0) parts.push("I couldn't find a checkable claim in this message.");
+    if (check.results.length === 0 && check.links.length === 0) parts.push("I couldn't find a checkable claim or link in this message.");
     check.results.forEach((r, i) => {
       const lines = [`${check.results.length > 1 ? `Claim ${i + 1}: ` : ""}${MARK[r.verdict]} (${r.confidence} confidence)`, `“${r.claim.text}”`, r.explanation];
       const cited = r.evidence.filter((e) => r.citations.includes(e.id)).slice(0, 3);
@@ -51,6 +58,12 @@ export function formatReply(check: CheckResult | null, image: ImageVerdict | nul
       parts.push(lines.join("\n"));
     });
   }
+  check?.links.forEach((link, i) => {
+    const lines = [`🔗 ${check.links.length > 1 ? `Link ${i + 1}: ` : "Link: "}${LINK_MARK[link.verdict]}`, defang(link.host), link.explanation];
+    if (link.impersonates) lines.push(`Pretends to be: ${link.impersonates}`);
+    if (link.related === "no") lines.push("This link is not about what the message says.");
+    parts.push(lines.join("\n"));
+  });
   if (image) {
     const warnings = image.signals.filter((s) => s.kind === "warning").map((s) => `• ${s.text}`);
     parts.push([`🖼 Image suspicion: ${image.level.toUpperCase()}`, ...(warnings.length ? warnings : ["• No warning signs in the file's hidden data. The edit check doesn't run on Telegram, so this is not proof the image is real."])].join("\n"));

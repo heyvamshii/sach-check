@@ -7,7 +7,7 @@ const plex = IBM_Plex_Sans({ variable: "--font-plex", subsets: ["latin"], weight
 
 export const metadata: Metadata = {
   title: "SachCheck: WhatsApp forward fact-checker",
-  description: "Paste a WhatsApp forward or upload an image. Five AI models check the claims against trusted sources and look for signs of editing.",
+  description: "Paste a WhatsApp forward or upload an image. Six AI models check the claims and links against trusted sources and look for signs of editing.",
   icons: { icon: "/icons/icon-192.png", apple: "/icons/icon-192.png" },
 };
 

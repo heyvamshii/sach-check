@@ -1,4 +1,5 @@
 import { chatJson, type FetchLike } from "./groq";
+import { stripLinks } from "./links/extract";
 import { isRelevant } from "./text";
 import { isFactChecker } from "./trusted";
 import type { Claim, Confidence, Evidence, Verdict } from "./types";
@@ -105,6 +106,7 @@ function formatEvidence(evidence: Evidence[]): string {
 const JUDGE_PROMPT = `You are a careful fact-checker for Indian WhatsApp forwards. Return JSON only.
 Decide if the claim is "True", "False", "Misleading" or "Unverified", using ONLY the numbered evidence.
 - Ratings from fact-checkers (PIB Fact Check, Alt News, BOOM, Factly, Vishvas News, AFP...) carry the most weight, but only if they are about the same claim.
+- Check dates. A rumour debunked years ago can come true later (e.g. a policy announced afterwards). When evidence conflicts, newer evidence and official sources (government, RBI, WHO, a "Page linked in the message" from an official site) outweigh older fact-checks.
 - "Misleading" = partly true, exaggerated, missing context, or an old event presented as new.
 - If the evidence does not directly address the claim, answer "Unverified". Never guess from general knowledge.
 - explanation: 1-2 short sentences in plain, simple English that a non-expert understands.
@@ -119,7 +121,7 @@ export function parseJudgement(data: Record<string, unknown>, evidence: Evidence
   // a verdict with nothing to back it up can't be confident
   if (verdict !== "Unverified" && citations.length === 0) confidence = "low";
   // links only ever come from the evidence list, never from model text (guards against injected phishing links)
-  const raw = typeof data.explanation === "string" ? data.explanation.replace(/https?:\/\/\S+|www\.\S+/gi, "").replace(/\s+/g, " ").trim() : "";
+  const raw = typeof data.explanation === "string" ? stripLinks(data.explanation).replace(/\s+/g, " ").trim() : "";
   const explanation = raw ? raw.slice(0, 500) : "No explanation given.";
   return { verdict, confidence, explanation, citations };
 }

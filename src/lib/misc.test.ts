@@ -89,6 +89,20 @@ describe("telegram", () => {
           evidence: [{ id: 1, source: "factcheck", title: "t", url: "https://pib.gov.in/x", publisher: "PIB", trusted: true }],
         },
       ],
+      links: [
+        {
+          raw: "sbi-kyc-update.xyz",
+          url: "https://sbi-kyc-update.xyz/",
+          host: "sbi-kyc-update.xyz",
+          context: "Update KYC at sbi-kyc-update.xyz",
+          verdict: "Dangerous",
+          related: "yes",
+          impersonates: "SBI",
+          explanation: "Fake SBI page.",
+          signals: [],
+          checkedWith: ["link rules"],
+        },
+      ],
       steps: [],
       warnings: [],
     };
@@ -96,7 +110,11 @@ describe("telegram", () => {
     expect(reply).toContain("❌ FALSE (high confidence)");
     expect(reply).toContain("• PIB: https://pib.gov.in/x");
     expect(reply).toContain("Image suspicion: MEDIUM");
-    expect(formatReply({ results: [], steps: [], warnings: [] }, null)).toContain("couldn't find a checkable claim");
+    expect(reply).toContain("⛔ DANGEROUS");
+    expect(reply).toContain("sbi-kyc-update[.]xyz");
+    expect(reply).not.toContain("sbi-kyc-update.xyz");
+    expect(reply).toContain("Pretends to be: SBI");
+    expect(formatReply({ results: [], links: [], steps: [], warnings: [] }, null)).toContain("couldn't find a checkable claim");
   });
 
   it("compares secrets safely", () => {

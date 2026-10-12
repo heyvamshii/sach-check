@@ -30,7 +30,7 @@ export function Masthead({ active }: Props) {
           </h1>
         </Link>
         <p className="mt-2 max-w-2xl font-display text-lg italic text-ink-soft sm:text-xl">
-          The fact desk for WhatsApp forwards. Five AI models check claims against trusted sources and look for signs of editing.
+          The fact desk for WhatsApp forwards. Six AI models check claims and links against trusted sources and look for signs of editing.
         </p>
       </div>
     </header>

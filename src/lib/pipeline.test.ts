@@ -29,7 +29,7 @@ describe("checkText without keys (basic mode)", () => {
   it("stops early when there is nothing to check", async () => {
     const result = await checkText("🙏🙏🙏", { keys: {}, gather });
     expect(result.results).toEqual([]);
-    expect(result.warnings).toContain("No checkable claim was found in this message.");
+    expect(result.warnings).toContain("No checkable claim or link was found in this message.");
   });
 
   it("warns when every evidence source failed", async () => {

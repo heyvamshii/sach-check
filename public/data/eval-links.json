@@ -1,0 +1,313 @@
+{
+  "method": "Link rules only (no keys, no network): look-alike names, fake official sites, bait words, risky endings, IP addresses, '@' tricks",
+  "messages": 40,
+  "linksFound": 40,
+  "scamsFlagged": 20,
+  "scamsTotal": 20,
+  "scamsDangerous": 19,
+  "safeCleared": 20,
+  "safeTotal": 20,
+  "safeRecognisedAsOfficial": 19,
+  "accuracy": 1,
+  "realWorld": {
+    "phishingTotal": 300,
+    "phishingFlagged": 174,
+    "popularTotal": 300,
+    "popularWronglyFlagged": 11,
+    "popularFlaggedExamples": [
+      "amazonaws.com",
+      "cloud.microsoft",
+      "microsoftonline.com",
+      "cdninstagram.com",
+      "amazonvideo.com",
+      "amazon.dev",
+      "static.microsoft",
+      "amazon-adsystem.com",
+      "paytmfirstgames.com",
+      "media-amazon.com"
+    ]
+  },
+  "rows": [
+    {
+      "id": 1,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 2,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 3,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 4,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 5,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 6,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 7,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 8,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 9,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 10,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 11,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 12,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 13,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 14,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 15,
+      "label": "scam",
+      "verdict": "Suspicious",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 16,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 17,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 18,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 19,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 20,
+      "label": "scam",
+      "verdict": "Dangerous",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 21,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 22,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 23,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 24,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 25,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 26,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 27,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 28,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 29,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 30,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 31,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 32,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 33,
+      "label": "safe",
+      "verdict": "Unknown",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 34,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 35,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 36,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 37,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 38,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 39,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    },
+    {
+      "id": 40,
+      "label": "safe",
+      "verdict": "Safe",
+      "correct": true,
+      "foundAll": true
+    }
+  ],
+  "generatedAt": "2026-10-12"
+}

@@ -10,7 +10,8 @@ const ROWS: { key: StepKey; model: string; title: string; what: string }[] = [
   { key: "classify", model: "Model 2b", title: "Sort by topic", what: "Health, political, financial or other" },
   { key: "search", model: "Model 3", title: "Search trusted sources", what: "Fact-checkers, official sites, newsrooms" },
   { key: "forensics", model: "Model 4", title: "Check the image", what: "Edited areas, hidden file data, AI-made" },
-  { key: "judge", model: "Model 5", title: "Give the verdict", what: "Weighs the evidence, cites sources" },
+  { key: "links", model: "Model 5", title: "Check the links", what: "Scam sites, fake bank pages, links that don't match the message" },
+  { key: "judge", model: "Model 6", title: "Give the verdict", what: "Weighs the evidence, cites sources" },
 ];
 
 const DOT: Record<StepState["status"], string> = {

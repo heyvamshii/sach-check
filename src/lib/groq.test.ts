@@ -50,8 +50,10 @@ describe("config", () => {
 
   it("reads keys and reports status without exposing them", () => {
     const env = { GROQ_API_KEY: "gsk_abcdefghijklmnop", TAVILY_API_KEY: "your_tavily_key", TELEGRAM_BOT_TOKEN: "123:abcdefghijk" } as unknown as NodeJS.ProcessEnv;
-    expect(readKeys(env)).toEqual({ groq: "gsk_abcdefghijklmnop", factCheck: undefined, tavily: undefined });
-    expect(serviceStatus(env)).toEqual({ groq: true, factCheck: false, tavily: false, telegram: true });
+    expect(readKeys(env)).toEqual({ groq: "gsk_abcdefghijklmnop", factCheck: undefined, tavily: undefined, safeBrowsing: undefined });
+    expect(serviceStatus(env)).toEqual({ groq: true, factCheck: false, tavily: false, safeBrowsing: false, telegram: true });
+    // the Fact Check key doubles as the Safe Browsing key
+    expect(readKeys({ GOOGLE_FACTCHECK_API_KEY: "AIzaSyExample123" } as unknown as NodeJS.ProcessEnv).safeBrowsing).toBe("AIzaSyExample123");
   });
 
   it("lets an env var choose the first model for a step", () => {

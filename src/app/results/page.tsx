@@ -44,6 +44,17 @@ interface ForensicsEval {
   generatedAt: string;
 }
 
+interface LinkEval {
+  messages: number;
+  linksFound: number;
+  scamsFlagged: number;
+  scamsTotal: number;
+  safeCleared: number;
+  safeTotal: number;
+  realWorld?: { phishingTotal: number; phishingFlagged: number; popularTotal: number; popularWronglyFlagged: number };
+  generatedAt: string;
+}
+
 interface OcrEval {
   images: number;
   tesseract: number | null;
@@ -97,11 +108,12 @@ function ClaimColumn({ title, data, missingHint }: { title: string; data: ClaimE
 }
 
 export default async function ResultsPage() {
-  const [basic, ai, forensics, ocr] = await Promise.all([
+  const [basic, ai, forensics, ocr, links] = await Promise.all([
     load<ClaimEval>("eval-claims-basic.json"),
     load<ClaimEval>("eval-claims-AI.json"),
     load<ForensicsEval>("eval-forensics.json"),
     load<OcrEval>("eval-ocr.json"),
+    load<LinkEval>("eval-links.json"),
   ]);
   const rows = (ai ?? basic)?.rows ?? [];
 
@@ -192,6 +204,35 @@ export default async function ResultsPage() {
             Generated photos with a patch pasted in from another picture, compared with untouched ones. The cut-off was picked on a separate set of photos. When WhatsApp re-saves an image
             it compresses everything again, which wipes out most traces of editing. That&apos;s why SachCheck calls image results &quot;signals&quot;, never proof.
           </p>
+        </section>
+        <section>
+          <p className="kicker">Test 4 · Checking links</p>
+          <h2 className="mt-1 max-w-3xl font-display text-3xl font-extrabold">Scam links are caught even in the middle of a message</h2>
+          {links ? (
+            <>
+              <div className="mt-6 grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4">
+                <Stat big={`${links.linksFound}/${links.messages}`} label="messages where every link was found" />
+                <Stat big={`${links.scamsFlagged}/${links.scamsTotal}`} label="scam links flagged (our test set)" tone="true" />
+                {links.realWorld && (
+                  <>
+                    <Stat big={pct(links.realWorld.phishingFlagged / links.realWorld.phishingTotal)} label={`of ${links.realWorld.phishingTotal} live phishing links flagged (OpenPhish feed)`} />
+                    <Stat
+                      big={`${links.realWorld.popularWronglyFlagged}/${links.realWorld.popularTotal}`}
+                      label="popular real websites wrongly flagged (Tranco top 300)"
+                      tone={links.realWorld.popularWronglyFlagged > 0 ? "false" : "true"}
+                    />
+                  </>
+                )}
+              </div>
+              <p className="mt-4 max-w-3xl text-sm text-ink-soft">
+                Rules only, with no keys: look-alike names, fake bank and government sites, bait words, risky endings and tricks like IP addresses. The 40 test messages were written by us
+                (20 scams, 20 real), so their score flatters the rules; the live phishing feed is the honest number. On the website, Google Safe Browsing, page reading and an AI model are
+                added on top. Most of the wrongly flagged popular sites are big companies&apos; own technical domains, such as amazonaws.com.
+              </p>
+            </>
+          ) : (
+            <p className="mt-3 text-sm text-muted">Not run yet: npm run eval:links</p>
+          )}
         </section>
       </main>
     </>

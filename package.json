@@ -13,7 +13,8 @@
     "eval:forensics": "tsx scripts/eval-forensics.ts",
     "eval:claims": "tsx scripts/eval-claims.ts",
     "eval:ocr": "tsx scripts/eval-ocr.ts",
-    "telegram:webhook": "tsx scripts/set-telegram-webhook.ts"
+    "telegram:webhook": "tsx scripts/set-telegram-webhook.ts",
+    "eval:links": "tsx scripts/eval-links.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.1",

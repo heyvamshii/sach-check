@@ -40,9 +40,43 @@ export interface ClaimResult {
   evidence: Evidence[];
 }
 
+export const LINK_VERDICTS = ["Dangerous", "Suspicious", "Misleading", "Unknown", "Safe"] as const;
+/** Most to least severe. "Misleading" = the site is fine, but it doesn't say what the message claims. */
+export type LinkVerdict = (typeof LINK_VERDICTS)[number];
+
+export type Relation = "yes" | "no" | "unclear";
+
+export interface LinkSignal {
+  kind: "danger" | "warning" | "good" | "info";
+  text: string;
+}
+
+/** The verdict for one link found in a message. */
+export interface LinkResult {
+  /** as written in the message */
+  raw: string;
+  url: string;
+  /** where a shortened link really leads */
+  finalUrl?: string;
+  host: string;
+  /** the sentence the link sits in */
+  context: string;
+  verdict: LinkVerdict;
+  /** is the link about the same thing as the message? */
+  related: Relation;
+  /** e.g. "SBI" when the site pretends to be SBI */
+  impersonates?: string;
+  /** the official organisation, when this is its real site */
+  officialSite?: string;
+  explanation: string;
+  signals: LinkSignal[];
+  /** tools that checked it, e.g. ["rules", "Google Safe Browsing", "Tavily page read", "gpt-oss-20b"] */
+  checkedWith: string[];
+}
+
 /** Which model or tool handled each pipeline step, shown to the user. */
 export interface StepTrace {
-  step: "extract" | "classify" | "search" | "judge";
+  step: "extract" | "classify" | "search" | "links" | "judge";
   engine: string;
   ai: boolean;
   ms: number;
@@ -51,6 +85,7 @@ export interface StepTrace {
 
 export interface CheckResult {
   results: ClaimResult[];
+  links: LinkResult[];
   steps: StepTrace[];
   warnings: string[];
 }
@@ -65,5 +100,6 @@ export interface ServiceStatus {
   groq: boolean;
   factCheck: boolean;
   tavily: boolean;
+  safeBrowsing: boolean;
   telegram: boolean;
 }

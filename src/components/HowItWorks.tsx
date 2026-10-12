@@ -3,7 +3,8 @@ const MODELS = [
   { n: "2", name: "Claim finder + sorter", tool: "Groq gpt-oss-20b · Qwen3.8 27B", job: "Pulls out the checkable claims and tags each one as health, political, money or other." },
   { n: "3", name: "Evidence search", tool: "Google Fact Check API · Google News · Tavily", job: "Looks for fact-checks by PIB, Alt News, BOOM, Factly and reports from trusted newsrooms." },
   { n: "4", name: "Image forensics", tool: "Error Level Analysis · EXIF/C2PA check · ViT deepfake detector", job: "Looks for pasted-in areas, editing software and AI-generation markers." },
-  { n: "5", name: "Judge", tool: "Groq gpt-oss-120b", job: "Weighs only the evidence found and gives a verdict with sources, or says Unverified." },
+  { n: "5", name: "Link checker", tool: "Link rules · Google Safe Browsing · Tavily page read · gpt-oss-20b", job: "Finds every link, even mid-sentence, and flags scam sites, fake bank pages and links that don't back up the message." },
+  { n: "6", name: "Judge", tool: "Groq gpt-oss-120b", job: "Weighs only the evidence found and gives a verdict with sources, or says Unverified." },
 ];
 
 export function HowItWorks() {
@@ -12,7 +13,7 @@ export function HowItWorks() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <p className="kicker">How it works</p>
         <h2 className="mt-1 max-w-3xl font-display text-3xl font-extrabold sm:text-4xl">Each model does one job. The judge only trusts evidence.</h2>
-        <ol className="mt-8 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-8 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
           {MODELS.map((m) => (
             <li key={m.n} className="bg-card p-5">
               <span className="font-display text-5xl font-extrabold text-false">{m.n}</span>
