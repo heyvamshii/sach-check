@@ -45,7 +45,7 @@ All test data is generated or written by scripts in this repo; nothing is downlo
 |---|---|---|
 | Fact-check verdicts, basic mode (no keys) | 50 known claims (30 fake/misleading, 20 true) in English, Hindi and Telugu: `data/claims.json` | Caught **12 of 30** fakes, **never called a fake claim true**, wrongly flagged 1 of 20 true claims; says "Unverified" when it can't settle a claim |
 | Fact-check verdicts, AI mode | Same 50 claims with Groq + Fact Check API + Tavily | **48 of 50 right (96%)**: caught **all 30** fakes, confirmed 18 of 20 true claims (2 left "Unverified"), **0** fakes called true, **0** true claims called fake; topic sorting 94% right |
-| Reading text from images | 6 generated WhatsApp screenshots | Tesseract: **100%**; Groq Qwen vision: **92%** on the images it answered (the free tier rate-limited one). Clean generated images, so real phone screenshots score lower |
+| Reading text from images | 6 generated WhatsApp screenshots | Tesseract: **100%**; Groq Qwen vision: **92%** (perfect on English and Hindi, 54% on Telugu). Clean generated images, so real phone screenshots score lower |
 | Spotting edited photos (ELA) | 60 unseen generated photos with a pasted-in patch vs untouched | **67%** on fresh edits, **60%** after WhatsApp-style re-compression (50% = guessing) |
 
 **Honest limits**
